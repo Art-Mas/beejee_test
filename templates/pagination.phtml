@@ -1,0 +1,41 @@
+<?php
+/**
+ * @var array $pages
+ * @var array $tasks
+ */
+$sort = $_GET['sort'] ?? null;
+$page = $_GET['page'] ?? null;
+$paginationUrl = ['page' => 'pageNum'];
+$sortUrl = [];
+if ($page) {
+    $sortUrl['page'] = $page;
+}
+if ($sort) {
+    $paginationUrl['sort'] = $sort;
+}
+$sortNameAsc = http_build_query(array_merge($sortUrl, ['sort' => 'name']));
+$sortNameDesc = http_build_query(array_merge($sortUrl, ['sort' => '-name']));
+$sortEmailAsc = http_build_query(array_merge($sortUrl, ['sort' => 'email']));
+$sortEmailDesc = http_build_query(array_merge($sortUrl, ['sort' => '-email']));
+
+
+?>
+
+<?php if ($pages >= 2): ?>
+    <span>pagination: </span>
+    <?php for ($page = 1; $page <= $pages; $page++ ):?>
+        <a href="?<?php echo str_replace('pageNum', $page, http_build_query($paginationUrl)) ?>"><?= $page ?></a>
+    <?php endfor; ?>
+<?php endif; ?>
+
+
+<?php if(count($tasks) >= 2): ?>
+    <div>
+        <span>sort: </span>
+        <a href="?<?= $sortNameAsc ?>">name</a>
+        <a href="?<?= $sortNameDesc ?>">-name</a>
+        <a href="?<?= $sortEmailAsc ?>">email</a>
+        <a href="?<?= $sortEmailDesc ?>">-email</a>
+    </div>
+<?php endif;?>
+

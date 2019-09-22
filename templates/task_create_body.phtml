@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var array $errors
+ * @var array $task
+ */
+?>
+
+<div>
+    <input type="text" name="name" placeholder="name" <?php if ($task['name'] ?? '') echo 'value="' . $task['name'] . '"' ?> />
+    <?php if ($errors['name'] ?? ''): ?>
+        <span class="error"><?= $errors['name'] ?></span>
+    <?php endif; ?>
+</div>
+<div>
+    <input type="text" name="email" placeholder="email" <?php if ($task['email'] ?? '') echo 'value="' . $task['email'] . '"' ?> />
+    <?php if ($errors['email'] ?? ''): ?>
+        <span class="error"><?= $errors['email'] ?></span>
+    <?php endif; ?>
+</div>
+<div>
+    <textarea name="text" placeholder="text" ><?php if ($task['text'] ?? '') echo html_entity_decode($task['text']) ?></textarea>
+</div>
+<div>
+    <input type="submit" value="submit">
+</div>

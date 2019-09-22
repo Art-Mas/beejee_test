@@ -1,0 +1,16 @@
+{
+    "require": {
+        "twig/twig": "^2.0",
+        "nikic/fast-route": "^1.3",
+        "rakit/validation": "^1.2",
+        "robmorgan/phinx": "^0.11.1",
+        "vlucas/phpdotenv": "^3.6",
+         "ext-pdo": "*",
+        "thingengineer/mysqli-database-class": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beejee\\": "src/"
+        }
+    }
+}

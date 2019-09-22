@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var array $task
+ */
+
+?>
+
+<form class="admin-task" method="post" action="/<?= $task['id'] ?>">
+    <input type="hidden" name="_method" value="put">
+    <div>
+        Is completed: <input type="checkbox" name="is_completed" value="1" <?php if($task['is_completed'] ?? '') echo "checked" ?>  />
+    </div>
+    <?php include "task_create_body.phtml" ?>
+
+</form>
