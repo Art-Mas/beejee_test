@@ -8,7 +8,6 @@ use Beejee\Models\Task;
 
 class IndexController extends Controller {
     private $errors = [];
-    private $isTaskCreated = false;
 
     private function renderIndex() {
         $model = new Task();
@@ -21,7 +20,6 @@ class IndexController extends Controller {
             [
                 'tasks' => $tasks,
                 'errors' => $this->errors,
-                'isTaskCreated' => $this->isTaskCreated,
                 'pages' => ceil($cnt / Task::LIMIT_PER_PAGE),
             ]
         );
@@ -43,7 +41,6 @@ class IndexController extends Controller {
                 Task::FIELD_EMAIL => $_POST['email'],
                 Task::FIELD_TEXT => htmlentities(htmlspecialchars($_POST['text'])),
             ]);
-            $this->isTaskCreated = true;
         }
         return $this->renderIndex();
     }

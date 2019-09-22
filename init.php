@@ -31,13 +31,13 @@ file_put_contents('.env', $envContent);
 
 echo 'trying create db ' . $db . '...' . "\n" ;
 try {
-    $conn = new PDO("mysql:host=$host", $user, $pass);
+    $conn = new PDO("mysql:host=$host;charset=utf8", $user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE DATABASE $db CHARACTER SET utf8 COLLATE utf8_general_ci";
     $conn->exec($sql);
     echo "Database created successfully" . "\n" ;
 } catch (PDOException $e) {
-    echo $sql . "\n" . $e->getMessage();
+    echo $e->getMessage();
 }
 
 echo 'END';
