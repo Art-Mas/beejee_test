@@ -47,7 +47,7 @@ class Router implements \Beejee\Interfaces\Router
                 $handler->runAction($vars);
                 break;
             default:
-                throw new \Exception('handler for route not found');
+                echo 404;die;
         }
     }
 
